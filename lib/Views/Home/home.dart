@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:stylish/Model/my_product.dart';
 import 'package:stylish/Model/product.dart';
+import 'package:stylish/Views/Tranding%20Products/tranding_products.dart';
 import 'package:stylish/utils/productCard.dart';
+import 'package:get/get.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -69,19 +71,22 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           ),
                           const SizedBox(width: 10),
-                          Container(
-                            height: 30,
-                            width: 70,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Colors.white),
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 5.0),
-                              child: Row(
-                                children: [
-                                  Text("Filter"),
-                                  Icon(Icons.filter_alt_outlined)
-                                ],
+                          GestureDetector(
+                            onTap: ()=> Get.to(ProductsPage()),
+                            child: Container(
+                              height: 30,
+                              width: 70,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.white),
+                              child: const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 5.0),
+                                child: Row(
+                                  children: [
+                                    Text("Filter"),
+                                    Icon(Icons.filter_alt_outlined)
+                                  ],
+                                ),
                               ),
                             ),
                           )
@@ -285,24 +290,13 @@ class _HomeViewState extends State<HomeView> {
                         ],
                       ),
                     ),
-                    _buildAllProducts(),
+
                   ],
                 ),
               ),
             ),
           );
   }
-  _buildAllProducts() => GridView.builder( gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
-      crossAxisCount: 3,
-      childAspectRatio: (100/140),
-      crossAxisSpacing: 12,
-      mainAxisSpacing: 12
-  ),
-    scrollDirection: Axis.vertical,
-    itemCount: MyProducts.allProduct.length,
-    itemBuilder: (context,index){
-      final allProducts = MyProducts.allProduct[index];
-      return Productcard(product: allProducts);
-    },);
+
 }
 
