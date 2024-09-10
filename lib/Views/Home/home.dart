@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:stylish/Model/my_product.dart';
+import 'package:stylish/Model/product.dart';
+import 'package:stylish/utils/productCard.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -282,11 +285,24 @@ class _HomeViewState extends State<HomeView> {
                         ],
                       ),
                     ),
-                    GridView.count(crossAxisCount: 2)
+                    _buildAllProducts(),
                   ],
                 ),
               ),
             ),
           );
   }
+  _buildAllProducts() => GridView.builder( gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
+      crossAxisCount: 3,
+      childAspectRatio: (100/140),
+      crossAxisSpacing: 12,
+      mainAxisSpacing: 12
+  ),
+    scrollDirection: Axis.vertical,
+    itemCount: MyProducts.allProduct.length,
+    itemBuilder: (context,index){
+      final allProducts = MyProducts.allProduct[index];
+      return Productcard(product: allProducts);
+    },);
 }
+
