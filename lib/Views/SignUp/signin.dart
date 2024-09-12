@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stylish/Views/Home/home.dart';
+import 'package:stylish/Views/Tranding%20Products/tranding_products.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -74,7 +75,9 @@ class LoginView extends StatelessWidget {
                     Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.to(() => ProductsPage());
+                            },
                             child: const Text(
                               "Forget Password",
                               style: TextStyle(color: Color(0xFFF83758)),
